@@ -1,0 +1,1942 @@
+@import "react-phone-input-2/lib/style.css";
+
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+
+/* =========================================
+   DASHBOARD LAYOUT
+   ========================================= */
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+  min-height: 100vh;
+  background: #111827;
+  color: white;
+  padding: 25px 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar nav a,
+.logout {
+  display: block;
+  width: 100%;
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sidebar nav a:hover,
+.logout:hover {
+  background: #1f2937;
+  color: white;
+}
+
+.logout {
+  margin-top: 40px;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  width: calc(100% - 250px);
+  padding: 32px 40px;
+  margin: 0;
+}
+
+.main-content h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   STATISTICS
+   ========================================= */
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.stat-card h3 {
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.primary-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.primary-button:hover {
+  background: #1f2937;
+}
+
+.cancel-button {
+  margin-left: 10px;
+  padding: 12px 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  color: #111827;
+  cursor: pointer;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.cancel-button:hover {
+  background: #f8fafc;
+}
+
+
+/* =========================================
+   PROJECT FORM
+   ========================================= */
+
+.project-form {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 25px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.project-form h2 {
+  margin-bottom: 20px;
+}
+
+.project-form input,
+.project-form textarea,
+.project-form select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #1f2937;
+}
+
+.project-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.project-form label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 600;
+}
+
+.project-form select {
+  margin-bottom: 10px;
+}
+
+
+/* =========================================
+   FORM ACTIONS
+   ========================================= */
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.form-actions .primary-button,
+.form-actions .cancel-button {
+  margin: 0;
+}
+
+
+/* =========================================
+   PROJECT LIST
+   ========================================= */
+
+.projects-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.projects-list .stat-card p {
+  margin-top: 8px;
+}
+
+
+/* =========================================
+   PROJECT ACTION BUTTONS
+   ========================================= */
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.project-actions .primary-button,
+.project-actions .cancel-button {
+  margin: 0;
+  min-width: 100px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================================
+   TASK AREA
+   ========================================= */
+
+/*
+   IMPORTANT:
+   The normal project form is limited to 720px,
+   but the Tasks section must use the full width.
+*/
+
+.task-area {
+  width: 100%;
+  max-width: none;
+  margin-top: 28px;
+  padding: 28px;
+}
+
+.task-area input,
+.task-area textarea,
+.task-area select {
+  width: 100%;
+}
+
+
+/* =========================================
+   TASK HEADER
+   ========================================= */
+
+.tasks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.tasks-header h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.tasks-subtitle {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 16px;
+}
+
+.tasks-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.tasks-header-actions button {
+  margin: 0;
+  height: 48px;
+}
+
+.board-toggle-button {
+  min-width: 130px;
+}
+
+.close-tasks-button {
+  min-width: 130px;
+}
+
+
+/* =========================================
+   CREATE TASK SECTION
+   ========================================= */
+
+.create-task-section {
+  width: 100%;
+  max-width: 850px;
+}
+
+.task-section-title {
+  margin: 0 0 18px;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.create-task-section input,
+.create-task-section textarea,
+.create-task-section select {
+  width: 100%;
+}
+
+
+/* =========================================
+   NORMAL TASK LIST
+   ========================================= */
+
+.task-list-section {
+  width: 100%;
+  max-width: 100%;
+}
+
+.section-spacing {
+  height: 30px;
+}
+
+
+/* =========================================
+   TASK CARD
+   ========================================= */
+
+.task-card {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 14px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.task-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.task-card-header h3 {
+  min-width: 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.task-priority {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.task-description {
+  margin: 0 0 16px;
+  color: #64748b;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.task-info,
+.task-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.task-info span,
+.task-dates span {
+  color: #475569;
+  overflow-wrap: anywhere;
+}
+
+.task-info strong,
+.task-dates strong {
+  color: #1e293b;
+}
+
+
+/* =========================================
+   TASK ACTIONS
+   ========================================= */
+
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.task-actions .primary-button,
+.task-actions .cancel-button {
+  margin: 0;
+  min-width: 80px;
+  height: 38px;
+  padding: 0 15px;
+  border-radius: 8px;
+}
+
+
+/* =========================================
+   BOARD SECTION
+   ========================================= */
+
+.board-section {
+  width: 100%;
+  max-width: none;
+  margin-top: 5px;
+  padding: 0;
+  background: transparent;
+}
+
+.board-section-header {
+  margin-bottom: 20px;
+}
+
+.board-section-header h3 {
+  margin: 0 0 5px;
+  font-size: 23px;
+}
+
+.board-section-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+
+/* =========================================
+   KANBAN BOARD
+   ========================================= */
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================
+   KANBAN COLUMN
+   ========================================= */
+
+.kanban-column {
+  min-width: 0;
+  min-height: 430px;
+  padding: 17px;
+  background: #f8fafc;
+  border: 1px solid #dbe3ec;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.kanban-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.kanban-column-header h3 {
+  min-width: 0;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.kanban-column-header span {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   KANBAN TASKS
+   ========================================= */
+
+.kanban-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+
+/* =========================================
+   KANBAN TASK CARD
+   ========================================= */
+
+.kanban-task {
+  width: 100%;
+  min-width: 0;
+  padding: 15px;
+  background: white;
+  border: 1px solid #dbe3ec;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+/*
+   Title and priority are stacked.
+   This prevents the priority badge from
+   escaping the task card.
+*/
+
+.kanban-task-top {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.kanban-task-top h4 {
+  width: 100%;
+  min-width: 0;
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.kanban-task .task-priority {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 7px 11px;
+}
+
+
+/* =========================================
+   KANBAN DESCRIPTION
+   ========================================= */
+
+.kanban-description {
+  width: 100%;
+  margin: 12px 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================
+   KANBAN FOOTER
+   ========================================= */
+
+.kanban-task-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.kanban-task-footer span {
+  display: block;
+  width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* =========================================
+   EMPTY BOARD COLUMN
+   ========================================= */
+
+.empty-column {
+  margin: 0;
+  padding: 35px 10px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   TABLET / SMALL LAPTOP
+   ========================================= */
+
+@media (max-width: 1200px) {
+  .main-content {
+    padding: 28px 30px;
+  }
+
+  .kanban-board {
+    gap: 14px;
+  }
+
+  .kanban-column {
+    padding: 14px;
+  }
+
+  .kanban-task {
+    padding: 13px;
+  }
+}
+
+
+/*
+   At this width four columns become too narrow,
+   so use two columns instead.
+*/
+
+@media (max-width: 1000px) {
+  .kanban-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tasks-header {
+    align-items: flex-start;
+  }
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 210px;
+    min-width: 210px;
+    padding: 22px 16px;
+  }
+
+  .main-content {
+    width: calc(100% - 210px);
+    padding: 24px;
+  }
+
+  .task-area {
+    padding: 22px;
+  }
+
+  .project-form {
+    max-width: 100%;
+  }
+
+  .tasks-header {
+    flex-wrap: wrap;
+  }
+
+  .tasks-header-actions {
+    width: 100%;
+  }
+
+  .tasks-header-actions button {
+    flex: 0 1 auto;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .logo {
+    margin-bottom: 18px;
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sidebar nav a,
+  .logout {
+    width: auto;
+    margin-top: 0;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .main-content h1 {
+    font-size: 27px;
+    line-height: 1.2;
+  }
+
+  .main-content h2 {
+    font-size: 21px;
+  }
+
+  .main-content h3 {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+
+  /* Task header */
+
+  .tasks-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .tasks-header h2 {
+    font-size: 26px;
+  }
+
+  .tasks-header-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tasks-header-actions button {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* Task area */
+
+  .task-area {
+    padding: 18px;
+  }
+
+
+  /* Board */
+
+  .kanban-board {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .kanban-column {
+    width: 100%;
+    min-height: auto;
+  }
+
+
+  /* Task card */
+
+  .task-card {
+    padding: 16px;
+  }
+
+  .task-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-info,
+  .task-dates {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .task-actions {
+    justify-content: flex-start;
+  }
+
+
+  /* Project buttons */
+
+  .project-actions {
+    width: 100%;
+  }
+
+  .project-actions .primary-button,
+  .project-actions .cancel-button {
+    flex: 1 1 140px;
+  }
+
+
+  /* Form */
+
+  .project-form {
+    width: 100%;
+    padding: 18px;
+  }
+
+  .project-form input,
+  .project-form textarea,
+  .project-form select {
+    width: 100%;
+  }
+
+  .form-actions {
+    width: 100%;
+  }
+
+  .form-actions button {
+    margin: 0;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 450px) {
+  .main-content {
+    padding: 15px 12px;
+  }
+
+  .task-area {
+    padding: 15px;
+  }
+
+  .tasks-header-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-header-actions button {
+    width: 100%;
+  }
+
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-actions button {
+    width: 100%;
+  }
+
+  .task-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-actions button {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .kanban-task {
+    padding: 14px;
+  }
+}
+
+/* =========================================
+   DASHBOARD CLEAN LAYOUT
+========================================= */
+
+.dashboard-heading {
+  margin-bottom: 30px;
+}
+
+.dashboard-heading h1 {
+  margin-bottom: 8px;
+}
+
+.stats-container {
+  margin-bottom: 42px;
+}
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.quick-actions-section {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.quick-actions-heading {
+  margin-bottom: 20px;
+}
+
+.quick-actions-heading h2 {
+  margin-bottom: 6px;
+  font-size: 24px;
+}
+
+.quick-actions-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.quick-action-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 105px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #1f2937;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+.quick-action-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #f1f5f9;
+  font-size: 23px;
+}
+
+.quick-action-card h3 {
+  margin: 0 0 5px;
+  font-size: 17px;
+}
+
+.quick-action-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.quick-action-arrow {
+  margin-left: auto;
+  font-size: 22px;
+  color: #64748b;
+}
+
+/* =========================================
+   TASK PAGE
+========================================= */
+
+.page-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.secondary-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #1f2937;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.secondary-action-button:hover {
+  background: #f8fafc;
+}
+
+/* =========================================
+   ALL TASKS
+========================================= */
+
+.all-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+
+.all-task-card {
+  width: 100%;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.all-task-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.all-task-header h2 {
+  margin: 0 0 7px;
+  font-size: 19px;
+}
+
+.task-project-name {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.all-task-card .task-description {
+  margin: 16px 0;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.all-task-details {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  padding: 17px 0;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.all-task-details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.all-task-details span {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.all-task-details strong {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.all-task-details select {
+  width: 150px;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+}
+
+.all-task-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state {
+  width: 100%;
+  padding: 55px 30px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.empty-state h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.empty-state p {
+  margin-bottom: 20px;
+  color: #64748b;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .all-task-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .page-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .all-task-header {
+    flex-direction: column;
+  }
+
+  .all-task-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Team Page */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.team-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 130px;
+  transition: 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.team-avatar {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  border-radius: 50%;
+  background: #111827;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.team-member-info {
+  min-width: 0;
+}
+
+.team-member-info h3 {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.team-member-info p {
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.team-role {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Team Form */
+
+.team-form {
+  width: 100%;
+  margin-top: 28px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.team-form-heading {
+  margin-bottom: 22px;
+}
+
+.team-form-heading h2 {
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+
+.team-form-heading p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.team-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  background: #ffffff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #64748b;
+}
+
+.team-form-error {
+  margin-top: 15px;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.team-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.cancel-button,
+.primary-action-button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+}
+
+.primary-action-button {
+  background: #111827;
+  border: 1px solid #111827;
+  color: #ffffff;
+}
+
+.primary-action-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 800px) {
+  .team-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-form-actions {
+    justify-content: stretch;
+  }
+
+  .cancel-button,
+  .primary-action-button {
+    flex: 1;
+  }
+}
+
+/* =========================================
+   PROJECT MEMBERS
+========================================= */
+
+.project-members-section {
+  margin-top: 30px;
+}
+
+.member-assignment-box {
+  margin-top: 22px;
+  padding: 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.member-assignment-box h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.member-assignment-box p {
+  margin-bottom: 16px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.member-assignment-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.member-assignment-row select {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+.member-assignment-row select:focus {
+  outline: none;
+  border-color: #64748b;
+}
+
+.member-assignment-row button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.member-info-message {
+  margin-top: 14px;
+  margin-bottom: 0 !important;
+  font-size: 13px !important;
+  color: #64748b !important;
+}
+
+.project-members-list {
+  margin-top: 28px;
+}
+
+.members-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.members-list-heading h3 {
+  font-size: 18px;
+}
+
+.members-list-heading span {
+  padding: 5px 10px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.project-member-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.project-member-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.project-member-card .team-avatar {
+  flex-shrink: 0;
+}
+
+.project-member-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.project-member-info h3 {
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+.project-member-info p {
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-role {
+  display: inline-block;
+  padding: 4px 9px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.remove-member-button {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.remove-member-button:hover {
+  background: #fef2f2;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+  .member-assignment-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .member-assignment-row button {
+    width: 100%;
+  }
+
+  .project-member-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-member-card {
+    align-items: flex-start;
+  }
+
+  .remove-member-button {
+    margin-left: auto;
+  }
+}
+
+/* =========================================
+   PROJECT DASHBOARD
+========================================= */
+
+.dashboard-page {
+  min-height: 100vh;
+  padding: 32px;
+  background: #f8fafc;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.dashboard-label {
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.dashboard-header h1 {
+  margin-bottom: 8px;
+  color: #0f172a;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.dashboard-header p:last-child {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.back-project-button {
+  padding: 10px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-project-button:hover {
+  background: #f1f5f9;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.dashboard-stat-card {
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.dashboard-stat-card span {
+  display: block;
+  margin-bottom: 10px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.dashboard-stat-card strong {
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.dashboard-progress-card {
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.dashboard-progress-card h2 {
+  margin-bottom: 16px;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.dashboard-progress-card > p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: #334155;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  margin-top: 12px;
+  color: #475569 !important;
+  font-size: 14px !important;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-page {
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+  }
+
+  .back-project-button {
+    width: 100%;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dashboard button on project cards */
+
+.dashboard-button {
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dashboard-button:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* =========================================
+   JIRA-STYLE KANBAN BOARD
+========================================= */
+
+.board-section {
+  margin-top: 28px;
+}
+
+.board-section-header {
+  margin-bottom: 20px;
+}
+
+.board-section-header h3 {
+  margin-bottom: 5px;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.board-section-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.kanban-column {
+  min-height: 360px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.kanban-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.kanban-column-header h3 {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.kanban-column-header span {
+  min-width: 24px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.kanban-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kanban-task {
+  padding: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.04);
+}
+
+.kanban-task select {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 7px 9px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.kanban-task select:focus {
+  outline: none;
+  border-color: #64748b;
+}
+
+.kanban-task-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.kanban-task-top h4 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.task-priority {
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.kanban-description {
+  margin-bottom: 14px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.kanban-task-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.empty-column {
+  padding: 30px 10px;
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .kanban-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  .kanban-column {
+    min-height: auto;
+  }
+}
+
+
+/* =========================================
+   KANBAN DRAG AND DROP
+========================================= */
+
+.kanban-task {
+  cursor: grab;
+}
+
+.kanban-task:active {
+  cursor: grabbing;
+}
+
+.kanban-task-dragging {
+  opacity: 0.5;
+  transform: rotate(1deg);
+}

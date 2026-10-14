@@ -1,0 +1,32 @@
+﻿# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local configuration
+.DS_Store
+Thumbs.db
+.vercel/
+
+# Private keys and certificates
+*.pem
+*.key
+
+# Include Next.js TypeScript declarations
+!apps/web/next-env.d.ts
