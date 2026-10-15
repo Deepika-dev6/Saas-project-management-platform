@@ -151,6 +151,5 @@ GitHub: [SaaS Project Management Platform](https://github.com/Deepika-dev6/Saas-
 
 ## Author
 
-**Deepika**
-
-Full Stack Web Development Capstone Project
+**Deepika**  
+Software Developer | Technology Enthusiast
