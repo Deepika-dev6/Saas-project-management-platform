@@ -180,3 +180,9 @@ Software Developer | Technology Enthusiast
 
 ### 8. Members Board
 ![Members Board](screenshots/Membersboard.png)
+
+### 9. Login Page
+![Login Page](screenshots/LoginPage.png)
+
+### 10. Registration Page
+![Registration Page](screenshots/RegisterPage.png)
