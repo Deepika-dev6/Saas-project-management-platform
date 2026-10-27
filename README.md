@@ -182,7 +182,7 @@ Software Developer | Technology Enthusiast
 ![Members Board](screenshots/Membersboard.png)
 
 ### 9. Login Page
-![Login Page](screenshots/LoginPage(2).png)
+![Login Page](screenshots/LoginPage.png)
 
 ### 10. Registration Page
-![Registration Page](screenshots/RegisterPage(2).png)
+![Registration Page](screenshots/RegisterPage.png)
