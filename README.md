@@ -158,7 +158,7 @@ Software Developer | Technology Enthusiast
 ## 📸 Project Screenshots
 
 ### 1. Main Dashboard
-![Main Dashboard](screenshots/mainDashboard.png)
+![Main Dashboard](screenshots/mainDasboard.png)
 
 ### 2. Projects Dashboard
 ![Projects Dashboard](screenshots/projectsdashboard.png)
