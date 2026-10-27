@@ -153,3 +153,30 @@ GitHub: [SaaS Project Management Platform](https://github.com/Deepika-dev6/Saas-
 
 **Deepika**  
 Software Developer | Technology Enthusiast
+
+
+## 📸 Project Screenshots
+
+### 1. Main Dashboard
+![Main Dashboard](screenshots/mainDashboard.png)
+
+### 2. Projects Dashboard
+![Projects Dashboard](screenshots/projectsdashboard.png)
+
+### 3. Create Projects
+![Create Projects](screenshots/CreateProjects.png)
+
+### 4. Projects Board
+![Projects Board](screenshots/Projectsboard.png)
+
+### 5. Tasks Board
+![Tasks Board](screenshots/Tasksboard.png)
+
+### 6. Create Tasks
+![Create Tasks](screenshots/CreateTasks.png)
+
+### 7. Board View
+![Board View](screenshots/BoardView.png)
+
+### 8. Members Board
+![Members Board](screenshots/Membersboard.png)
